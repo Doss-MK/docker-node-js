@@ -13,17 +13,17 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t docker-node-js-ecr .
-      - docker tag docker-node-js-ecr:latest 754082843677.dkr.ecr.us-east-1.amazonaws.com/docker-node-js-ecr:latest
-      - docker tag docker-node-js-ecr:latest 754082843677.dkr.ecr.us-east-1.amazonaws.com/docker-node-js-ecr:$IMAGE_TAG
+      - docker build -t simple-docker-node-js .
+      - docker tag simple-docker-node-js:latest 754082843677.dkr.ecr.us-east-1.amazonaws.com/simple-docker-node-js:latest
+      - docker tag simple-docker-node-js:latest 754082843677.dkr.ecr.us-east-1.amazonaws.com/simple-docker-node-js:$IMAGE_TAG
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
-      - docker push 754082843677.dkr.ecr.us-east-1.amazonaws.com/docker-node-js-ecr:latest
-      - docker push 754082843677.dkr.ecr.us-east-1.amazonaws.com/docker-node-js-ecr:$IMAGE_TAG
+      - docker push 754082843677.dkr.ecr.us-east-1.amazonaws.com/simple-docker-node-js:latest
+      - docker push 754082843677.dkr.ecr.us-east-1.amazonaws.com/simple-docker-node-js:$IMAGE_TAG
       - echo Writing imagedefinitions.json...
-      - printf '[{"name":"docker-node-js-ecr","imageUri":"%s"}]' 754082843677.dkr.ecr.us-east-1.amazonaws.com/docker-node-js-ecr:$IMAGE_TAG > imagedefinitions.json
+      - printf '[{"name":"simple-docker-node-js","imageUri":"%s"}]' 754082843677.dkr.ecr.us-east-1.amazonaws.com/simple-docker-node-js:$IMAGE_TAG > imagedefinitions.json
       - echo printing imagedefinitions.json
       - cat imagedefinitions.json
 
