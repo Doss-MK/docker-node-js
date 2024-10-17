@@ -6,7 +6,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/test', (req, res) => {
-    res.send("Doss MK testing case");
+    res.send("Doss MK testing case1");
 });
 
 app.listen(3000, function() {
